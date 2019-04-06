@@ -92,15 +92,6 @@ public class UserMode {
             Traveler movingVehicle = new Traveler(currentlyChosen.getPlatformPlace(1,0),currentlyChosen);
             platformChoiceBox.getValue().traversalNodes.add(movingVehicle);
             movingVehicle.start();
-            Thread disableButtonABit = new Thread(() ->{
-                addRandomVehicle.setDisable(true);
-                try {
-                    sleep(3000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                addRandomVehicle.setDisable(false);
-            });
         });
 
         HBox upperMenu = new HBox(helpText, minimumVehicleAmount, startSimulation,addRandomVehicle);

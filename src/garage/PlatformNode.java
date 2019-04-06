@@ -19,6 +19,7 @@ public class PlatformNode implements Serializable {
     private String defaultText;
     private static int counter = 0;
     private int index;
+    private boolean occupied;
 
     public PlatformNode(boolean isParkingSpot) {
         vehicle = null;
@@ -34,6 +35,7 @@ public class PlatformNode implements Serializable {
     public boolean isEmpty() {
         return vehicle == null;
     }
+
 
     public void setVehicleLabel() {
         if (nodeLabel == null)
@@ -71,6 +73,13 @@ public class PlatformNode implements Serializable {
     public void emplace(Vehicle vehicle, String label){
         this.vehicle = vehicle;
         javafx.application.Platform.runLater(() -> nodeLabel.setText(label));
+    }
+
+    public boolean isOccupied() {
+        return occupied;
+    }
+    public void setOccupied(boolean occupied) {
+        this.occupied = occupied;
     }
 }
 

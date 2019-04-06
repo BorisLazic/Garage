@@ -82,11 +82,13 @@ public class Platform implements Serializable {
                     if (!saverOfVehicles.isEmpty()) {
                         place.vehicle = saverOfVehicles.remove();
                         place.setVehicleLabel();
+                        place.setOccupied(true);
                         traversalNodes.add(new Traveler(place, this));
                         freeParkingSpots--;
                     } else if (!minimumFulfillment.isEmpty()) {
                         place.vehicle = minimumFulfillment.remove();
                         place.setVehicleLabel();
+                        place.setOccupied(true);
                         platformVehicles.add(place.vehicle);
                         traversalNodes.add(new Traveler(place, this));
                         freeParkingSpots--;
@@ -144,8 +146,9 @@ public class Platform implements Serializable {
         for (Traveler traveler :
                 traversalNodes) {
             if (random.nextInt(100) < 15 && !traveler.isMoving())
+            {
                 traveler.start();
-        }
+        }}
     }
 
 

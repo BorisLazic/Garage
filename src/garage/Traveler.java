@@ -25,10 +25,10 @@ public class Traveler extends Thread implements Serializable {
     private String labelText;
     private ArrayList<PlatformNode> currentRoute;
     private Iterator<PlatformNode> iterator;
-    private boolean isLookingForParking = false;//false indicates intention to exit
+    private boolean isLookingForParking = false;
     private boolean isLookingForExit = false;
     private boolean isMoving;
-
+    private static Object freeParkingSpotsLocker = new Object();
 
     public Traveler(PlatformNode currentNode, Platform platform) {
         this.currentNode = currentNode;
@@ -70,13 +70,20 @@ public class Traveler extends Thread implements Serializable {
     @Override
     public void run() {
         isMoving = true;
+        if (currentNode.isParkingSpot && currentNode.isOccupied()) {
+            currentNode.setOccupied(false);
+            synchronized (freeParkingSpotsLocker) {
+                platform.freeParkingSpots++;
+            }
+        }
         while (true) {
+            Boolean isParked = false;
             if (iterator.hasNext()) {
                 while (iterator.hasNext()) {
                     PlatformNode nextNode = iterator.next();
                     setupNextCycle(nextNode);
                     if (isLookingForParking)
-                        park();
+                        isParked = park();
                     try {
                         sleep(waitAmount * 2);
                     } catch (InterruptedException e) {
@@ -84,7 +91,19 @@ public class Traveler extends Thread implements Serializable {
                     }
                 }
             }
-            findNewRoute();
+            if (isParked) {
+                try {
+                    sleep(2500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                iterator = findNewRoute();
+                if (iterator == null) {
+                    currentNode.leave();
+                    break;
+                }
+            }
         }
     }
 
@@ -107,25 +126,35 @@ public class Traveler extends Thread implements Serializable {
         }
     }
 
-    private void park() {
+    private boolean park() {
         Pair<ArrayList<PlatformNode>, Integer> row = platform.getPlatformNodeRow(currentNode);
         if ((row.getValue() % 4) == 1) {
             PlatformNode parkingNode;
-            if ((parkingNode = row.getKey().get(row.getValue() - 1)).isEmpty() && parkingNode.isParkingSpot) {
+            if (!(parkingNode = row.getKey().get(row.getValue() - 1)).isOccupied() && parkingNode.isParkingSpot) {
                 iterator = (Collections.singletonList(parkingNode).listIterator(0));
                 isLookingForParking = false;
                 isLookingForExit = true;
-                platform.freeParkingSpots--;
-            } else if ((parkingNode = row.getKey().get(row.getValue() + 2)).isEmpty() && parkingNode.isParkingSpot) {
+                synchronized (freeParkingSpotsLocker) {
+                    platform.freeParkingSpots--;
+                }
+                parkingNode.setOccupied(true);
+                return true;
+            }
+            if (!(parkingNode = row.getKey().get(row.getValue() + 2)).isOccupied() && parkingNode.isParkingSpot) {
                 iterator = Arrays.asList(row.getKey().get(row.getValue() + 1), row.getKey().get(row.getValue() + 2)).listIterator(0);
                 isLookingForParking = false;
                 isLookingForExit = true;
-                platform.freeParkingSpots--;
+                synchronized (freeParkingSpotsLocker) {
+                    platform.freeParkingSpots--;
+                }
+                parkingNode.setOccupied(true);
+                return true;
             }
-        }
+        }//TODO ADD REST OF PARKING
+        return false;
     }
 
-    private void findNewRoute() {
+    private Iterator<PlatformNode> findNewRoute() {
         int indexOfCurrentNode = platform.getCardinalIndex(currentNode);
         if (isLookingForExit) {
             if (((indexOfCurrentNode % 4) == 2) && ((indexOfCurrentNode / GRID_WIDTH) == 2)) {
@@ -135,31 +164,40 @@ public class Traveler extends Thread implements Serializable {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                iterator = platform.propagatedExitRoute.listIterator(platform.propagatedExitRoute
-                        .indexOf(platform.getPlatformPlace(0, indexOfCurrentNode % GRID_WIDTH)));
                 waitForRightSide(indexOfCurrentNode % GRID_WIDTH);
+                return platform.propagatedExitRoute.listIterator(platform.propagatedExitRoute
+                        .indexOf(platform.getPlatformPlace(0, indexOfCurrentNode % GRID_WIDTH)));
             } else if ((indexOfCurrentNode == 0)) {
                 if (Garage.indexOf(platform) == 0) {
-                    System.out.println("We done, charge me \n");
-                    return;
+                    return null;
+                } else {
+                    platform.getPlatformVehicles().remove(this.vehicle);
+                    platform.traversalNodes.remove(this);
+                    platform = Garage.get(Garage.indexOf(platform) - 1);
+                    return platform.propagatedExitRoute.listIterator();
                 }
-                platform = Garage.get(Garage.indexOf(platform) - 1);
-                iterator = platform.propagatedExitRoute.listIterator();
             }
         }
-        if(isLookingForParking){
-            if(Garage.indexOf(platform) == (Garage.size() - 1)){
-                iterator = platform.propagatedExitRoute.listIterator(0);
-                return;
+        if (isLookingForParking) {
+            if (Garage.indexOf(platform) == (Garage.size() - 1)) {
+                return platform.propagatedExitRoute.listIterator(0);
+            } else {
+                platform.getPlatformVehicles().remove(this.vehicle);
+                platform.traversalNodes.remove(this);
+                platform = Garage.get(Garage.indexOf(platform) + 1);
+                if (platform.freeParkingSpots > 0)
+                    return platform.freePlatformParkingRoute.listIterator();
+                else
+                    return platform.fullPlatformParkingRoute.listIterator();
             }
-
         }
+        return null;
     }
 
     private void waitForRightSide(int horizontalIndex) {
         ArrayList<PlatformNode> prioritizedNodes = new ArrayList<>(Arrays.asList(platform.getPlatformPlace(0, horizontalIndex - 1),
                 platform.getPlatformPlace(0, horizontalIndex), platform.getPlatformPlace(0, horizontalIndex + 1)));
-        while (!prioritizedNodes.get(0).isEmpty() && !prioritizedNodes.get(1).isEmpty() && !prioritizedNodes.get(2).isEmpty()) {
+        while (!prioritizedNodes.get(2).isEmpty() || !prioritizedNodes.get(1).isEmpty() || !prioritizedNodes.get(0).isEmpty()) {
             try {
                 sleep(waitAmount);
             } catch (InterruptedException e) {
