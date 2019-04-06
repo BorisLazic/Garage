@@ -15,10 +15,7 @@ import static garage.UserMode.GRID_WIDTH;
 
 public class Traveler extends Thread implements Serializable {
 
-    private static int start = 1;
-    private int index;
     private static long waitAmount = 250;
-
     private PlatformNode currentNode;
     private Vehicle vehicle;
     private Platform platform;
@@ -28,7 +25,7 @@ public class Traveler extends Thread implements Serializable {
     private boolean isLookingForParking = false;
     private boolean isLookingForExit = false;
     private boolean isMoving;
-    private static Object freeParkingSpotsLocker = new Object();
+    private static Integer freeParkingSpotsLocker = 420;
 
     public Traveler(PlatformNode currentNode, Platform platform) {
         this.currentNode = currentNode;
@@ -63,10 +60,6 @@ public class Traveler extends Thread implements Serializable {
         }
     }
 
-    public String toString() {
-        return "Traveler" + index;
-    }
-
     @Override
     public void run() {
         isMoving = true;
@@ -91,18 +84,10 @@ public class Traveler extends Thread implements Serializable {
                     }
                 }
             }
-            if (isParked) {
-                try {
-                    sleep(2500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            } else {
-                iterator = findNewRoute();
-                if (iterator == null) {
-                    currentNode.leave();
-                    break;
-                }
+            iterator = findNewRoute();
+            if (iterator == null) {
+                currentNode.leave();
+                break;
             }
         }
     }
@@ -128,29 +113,37 @@ public class Traveler extends Thread implements Serializable {
 
     private boolean park() {
         Pair<ArrayList<PlatformNode>, Integer> row = platform.getPlatformNodeRow(currentNode);
+        int sideChooser = 0;
         if ((row.getValue() % 4) == 1) {
-            PlatformNode parkingNode;
-            if (!(parkingNode = row.getKey().get(row.getValue() - 1)).isOccupied() && parkingNode.isParkingSpot) {
-                iterator = (Collections.singletonList(parkingNode).listIterator(0));
-                isLookingForParking = false;
-                isLookingForExit = true;
-                synchronized (freeParkingSpotsLocker) {
-                    platform.freeParkingSpots--;
-                }
-                parkingNode.setOccupied(true);
-                return true;
+            sideChooser = 1;
+        } else if ((row.getValue() % 4) == 2) {
+            sideChooser = -1;
+        }
+        if (sideChooser == 0)
+            return false;
+        PlatformNode parkingNode;
+
+        if (!(parkingNode = row.getKey().get(row.getValue() - sideChooser)).isOccupied() && parkingNode.isParkingSpot) {
+            iterator = (Collections.singletonList(parkingNode).listIterator(0));
+            isLookingForParking = false;
+            isLookingForExit = true;
+            synchronized (freeParkingSpotsLocker) {
+                platform.freeParkingSpots--;
             }
-            if (!(parkingNode = row.getKey().get(row.getValue() + 2)).isOccupied() && parkingNode.isParkingSpot) {
-                iterator = Arrays.asList(row.getKey().get(row.getValue() + 1), row.getKey().get(row.getValue() + 2)).listIterator(0);
-                isLookingForParking = false;
-                isLookingForExit = true;
-                synchronized (freeParkingSpotsLocker) {
-                    platform.freeParkingSpots--;
-                }
-                parkingNode.setOccupied(true);
-                return true;
+            parkingNode.setOccupied(true);
+            return true;
+        }
+        if (!(parkingNode = row.getKey().get(row.getValue() + 2 * sideChooser)).isOccupied() && parkingNode.isParkingSpot) {
+            iterator = Arrays.asList(row.getKey().get(row.getValue() + sideChooser), row.getKey().get(row.getValue() + 2 * sideChooser))
+                    .listIterator(0);
+            isLookingForParking = false;
+            isLookingForExit = true;
+            synchronized (freeParkingSpotsLocker) {
+                platform.freeParkingSpots--;
             }
-        }//TODO ADD REST OF PARKING
+            parkingNode.setOccupied(true);
+            return true;
+        }
         return false;
     }
 
@@ -180,6 +173,8 @@ public class Traveler extends Thread implements Serializable {
         }
         if (isLookingForParking) {
             if (Garage.indexOf(platform) == (Garage.size() - 1)) {
+                isLookingForParking = false;
+                isLookingForExit = true;
                 return platform.propagatedExitRoute.listIterator(0);
             } else {
                 platform.getPlatformVehicles().remove(this.vehicle);
