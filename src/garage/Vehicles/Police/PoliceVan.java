@@ -1,11 +1,12 @@
 package garage.Vehicles.Police;
 
 import garage.Administrator;
-import garage.Vehicles.Van;
+import garage.Vehicles.Civil.Van;
+import garage.Vehicles.ServiceVehicle;
 
 import java.io.Serializable;
 
-public class PoliceVan extends Van implements Serializable {
+public class PoliceVan extends Van implements Serializable, ServiceVehicle {
     public PoliceVan() {
         super();
         setImageURI(Administrator.appFilesPath + "PoliceVan.jpg");

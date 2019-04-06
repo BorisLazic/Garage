@@ -17,14 +17,13 @@ import javafx.stage.Stage;
 
 import java.util.LinkedList;
 
-import static java.lang.Thread.sleep;
-
 public class UserMode {
 
     public static int GRID_WIDTH = 8;
     public static int GRID_HEIGHT = 10;
 
     public static GridPane userModeGridPane = new GridPane();
+    public static ParkingRegulation parkingRegulation = new ParkingRegulation();
     public static void startUserMode(ObservableList<Platform> platforms) {
         Stage userModeStage = new Stage();
         initializeGridPane();
@@ -78,22 +77,23 @@ public class UserMode {
         startSimulation.setPrefSize(250, 50);
         startSimulation.setOnAction(Event -> {
             startSimulation(platformChoiceBox.getItems());
-//            startSimulation.disableProperty().setValue(true);
+//            startSimulation.disableProperty().setValue(true); TODO UNCOMMENT
         });
         startSimulation.disableProperty().bind(minimumVehicleAmount.disabledProperty().not());
 
         Button addRandomVehicle = new Button("Add random vehicle");
         addRandomVehicle.setPrefSize(250, 50);
         addRandomVehicle.setOnAction(Event -> {
-
+        //TODO disable if platform full
             Vehicle vehicle = Administrator.getRandomVehicle();
-            Platform currentlyChosen = platformChoiceBox.getValue();
+            Platform currentlyChosen = platformChoiceBox.getItems().get(0);
             currentlyChosen.getPlatformPlace(1,0).vehicle = vehicle;
             currentlyChosen.getPlatformPlace(1,0).setVehicleLabel();
             Traveler movingVehicle = new Traveler(currentlyChosen.getPlatformPlace(1,0),currentlyChosen);
             platformChoiceBox.getValue().traversalNodes.add(movingVehicle);
             movingVehicle.start();
         });
+
 
         HBox upperMenu = new HBox(helpText, minimumVehicleAmount, startSimulation,addRandomVehicle);
         upperMenu.setSpacing(20);

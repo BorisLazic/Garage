@@ -1,6 +1,5 @@
 package garage;
 
-import garage.Vehicles.Car;
 import garage.Vehicles.Vehicle;
 import javafx.scene.control.Label;
 import javafx.util.Pair;
@@ -15,7 +14,7 @@ import static garage.UserMode.GRID_HEIGHT;
 import static garage.UserMode.GRID_WIDTH;
 
 public class Platform implements Serializable {
-    private static int platformIndexCounter = 0;
+    private static int platformIndexCounter;
     private int platformIndex;
     public int freeParkingSpots;
     private LinkedList<Vehicle> platformVehicles;
@@ -66,9 +65,8 @@ public class Platform implements Serializable {
         for (int i = 8; i >= 2; i--)
             innerParkingExit.add(vertices.get(i).get(2));
 
-        for (int j = 7; j >= 0; j--) {
+        for (int j = 7; j >= 0; j--)
             propagatedExitRoute.add(vertices.get(0).get(j));
-        }
     }
 
     public void setupPlatform(LinkedList<Vehicle> minimumFulfillment) {
@@ -78,7 +76,7 @@ public class Platform implements Serializable {
             for (int j = 0; j < GRID_WIDTH; j++) {
                 PlatformNode place = this.getPlatformPlace(i, j);
                 place.setVehicleLabel();
-                if (place.isEmpty() && place.isParkingSpot) {
+                if (!place.isOccupied() && place.isParkingSpot) {
                     if (!saverOfVehicles.isEmpty()) {
                         place.vehicle = saverOfVehicles.remove();
                         place.setVehicleLabel();

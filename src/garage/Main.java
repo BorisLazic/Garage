@@ -1,15 +1,9 @@
 package garage;
 
 import javafx.application.Application;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
+import static java.lang.Thread.sleep;
 
 public class Main extends Application {
 
@@ -36,7 +30,7 @@ public class Main extends Application {
 //        vbox.setPadding(new Insets(125,0,0,0));
 //        BorderPane layout = new BorderPane();
 //        layout.setCenter(vbox);
-//        layout.setStyle("-fx-background-color: #000030");
+//        layout.setStyle("-fx-background-color: #000030");-
 //
 //        Scene scene = new Scene(layout,640,480);
 //        primaryStage.setScene(scene);

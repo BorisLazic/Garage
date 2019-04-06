@@ -1,16 +1,15 @@
 package garage;
 
+import garage.Vehicles.ServiceVehicle;
 import garage.Vehicles.Vehicle;
 import javafx.util.Pair;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Iterator;
+import java.util.*;
 
 import static garage.Administrator.Garage;
 import static garage.UserMode.GRID_WIDTH;
+import static garage.UserMode.parkingRegulation;
 
 
 public class Traveler extends Thread implements Serializable {
@@ -20,42 +19,35 @@ public class Traveler extends Thread implements Serializable {
     private Vehicle vehicle;
     private Platform platform;
     private String labelText;
-    private ArrayList<PlatformNode> currentRoute;
     private Iterator<PlatformNode> iterator;
     private boolean isLookingForParking = false;
     private boolean isLookingForExit = false;
     private boolean isMoving;
-    private static Integer freeParkingSpotsLocker = 420;
+    private static final Integer freeParkingSpotsLocker = 420;
 
     public Traveler(PlatformNode currentNode, Platform platform) {
         this.currentNode = currentNode;
-        if (!currentNode.isParkingSpot) {
-            isLookingForParking = true;
-        } else {
-            isLookingForExit = true;
-        }
         this.vehicle = currentNode.vehicle;
+        if (currentNode.isParkingSpot) {
+            isLookingForExit = true;
+        } else {
+            isLookingForParking = true;
+        }
+        if (!(vehicle instanceof ServiceVehicle))
+            parkingRegulation.startParkingMeter(vehicle.getRegistrationNumber());
         labelText = currentNode.nodeLabel.getText();
         this.platform = platform;
-        Pair<ArrayList<PlatformNode>, Integer> row = this.platform.getPlatformNodeRow(currentNode);
-        PlatformNode nextNode;
         if (isLookingForParking) {
             if (platform.freeParkingSpots > 0) {
-                currentRoute = platform.freePlatformParkingRoute;
-                iterator = currentRoute.listIterator(1);
+                iterator = platform.freePlatformParkingRoute.listIterator(1);
             } else {
-                currentRoute = platform.fullPlatformParkingRoute;
-                iterator = currentRoute.listIterator(1);
+                iterator = platform.fullPlatformParkingRoute.listIterator(1);
             }
         } else if (isLookingForExit) {
-            if ((row.getValue() % 4) == 0) {
-                nextNode = row.getKey().get(row.getValue() + 1);
-                currentRoute = new ArrayList<>(platform.findRoute(nextNode));
-                iterator = currentRoute.listIterator(currentRoute.indexOf(nextNode));
-            } else if ((row.getValue() % 4) == 3) {
-                nextNode = row.getKey().get(row.getValue() - 1);
-                currentRoute = new ArrayList<>(platform.findRoute(nextNode));
-                iterator = currentRoute.listIterator(currentRoute.indexOf(nextNode));
+            try {
+                getExitRoute();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
@@ -70,7 +62,7 @@ public class Traveler extends Thread implements Serializable {
             }
         }
         while (true) {
-            Boolean isParked = false;
+            boolean isParked = false;
             if (iterator.hasNext()) {
                 while (iterator.hasNext()) {
                     PlatformNode nextNode = iterator.next();
@@ -84,12 +76,42 @@ public class Traveler extends Thread implements Serializable {
                     }
                 }
             }
-            iterator = findNewRoute();
-            if (iterator == null) {
-                currentNode.leave();
-                break;
+            if (isParked) {
+                try {
+                    sleep(new Random().nextInt(10) * 10 * waitAmount);
+                    getExitRoute();
+                    currentNode.setOccupied(false);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else {
+                iterator = extendRoute();
+                if (!iterator.hasNext()) {
+                    if (!(vehicle instanceof ServiceVehicle)) {
+                        UserMode.parkingRegulation.endParkingMeterAndCharge(vehicle.getRegistrationNumber());
+                    }
+                    currentNode.leave();
+                    break;
+                }
             }
         }
+    }
+
+    private void getExitRoute() throws Exception {
+        Pair<ArrayList<PlatformNode>, Integer> row = this.platform.getPlatformNodeRow(currentNode);
+        PlatformNode nextNode;
+        ArrayList<PlatformNode> currentRoute;
+        int picker;
+        if ((row.getValue() % 4) == 0) {
+            picker = 1;
+        } else if ((row.getValue() % 4) == 3) {
+            picker = -1;
+        } else {
+            throw new Exception("Vehicle not parked.");
+        }
+        nextNode = row.getKey().get(row.getValue() + picker);
+        currentRoute = new ArrayList<>(platform.findRoute(nextNode));
+        iterator = currentRoute.listIterator(currentRoute.indexOf(nextNode));
     }
 
     private void setupNextCycle(PlatformNode nextNode) {
@@ -131,6 +153,9 @@ public class Traveler extends Thread implements Serializable {
                 platform.freeParkingSpots--;
             }
             parkingNode.setOccupied(true);
+            if (!(vehicle instanceof ServiceVehicle)) {
+                UserMode.parkingRegulation.startParkingMeter(vehicle.getRegistrationNumber());
+            }
             return true;
         }
         if (!(parkingNode = row.getKey().get(row.getValue() + 2 * sideChooser)).isOccupied() && parkingNode.isParkingSpot) {
@@ -142,12 +167,15 @@ public class Traveler extends Thread implements Serializable {
                 platform.freeParkingSpots--;
             }
             parkingNode.setOccupied(true);
+            if (!(vehicle instanceof ServiceVehicle)) {
+                UserMode.parkingRegulation.startParkingMeter(vehicle.getRegistrationNumber());
+            }
             return true;
         }
         return false;
     }
 
-    private Iterator<PlatformNode> findNewRoute() {
+    private Iterator<PlatformNode> extendRoute() {
         int indexOfCurrentNode = platform.getCardinalIndex(currentNode);
         if (isLookingForExit) {
             if (((indexOfCurrentNode % 4) == 2) && ((indexOfCurrentNode / GRID_WIDTH) == 2)) {
@@ -158,11 +186,10 @@ public class Traveler extends Thread implements Serializable {
                     e.printStackTrace();
                 }
                 waitForRightSide(indexOfCurrentNode % GRID_WIDTH);
-                return platform.propagatedExitRoute.listIterator(platform.propagatedExitRoute
-                        .indexOf(platform.getPlatformPlace(0, indexOfCurrentNode % GRID_WIDTH)));
+                return platform.propagatedExitRoute.listIterator(platform.propagatedExitRoute.indexOf(platform.getPlatformPlace(0, indexOfCurrentNode % GRID_WIDTH)));
             } else if ((indexOfCurrentNode == 0)) {
                 if (Garage.indexOf(platform) == 0) {
-                    return null;
+                    return new ArrayList<PlatformNode>().iterator();
                 } else {
                     platform.getPlatformVehicles().remove(this.vehicle);
                     platform.traversalNodes.remove(this);
@@ -186,7 +213,7 @@ public class Traveler extends Thread implements Serializable {
                     return platform.fullPlatformParkingRoute.listIterator();
             }
         }
-        return null;
+        return new ArrayList<PlatformNode>().iterator();
     }
 
     private void waitForRightSide(int horizontalIndex) {

@@ -2,13 +2,13 @@ package garage;
 
 import garage.Vehicles.Ambulance.AmbulanceCar;
 import garage.Vehicles.Ambulance.AmbulanceVan;
-import garage.Vehicles.Car;
+import garage.Vehicles.Civil.Car;
 import garage.Vehicles.Firefigher.Firetruck;
-import garage.Vehicles.Motorcycle;
+import garage.Vehicles.Civil.Motorcycle;
 import garage.Vehicles.Police.PoliceCar;
 import garage.Vehicles.Police.PoliceMotorcycle;
 import garage.Vehicles.Police.PoliceVan;
-import garage.Vehicles.Van;
+import garage.Vehicles.Civil.Van;
 import garage.Vehicles.Vehicle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

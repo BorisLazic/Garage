@@ -1,6 +1,7 @@
-package garage.Vehicles;
+package garage.Vehicles.Civil;
 
 import garage.Administrator;
+import garage.Vehicles.Vehicle;
 
 import java.io.Serializable;
 import java.util.Random;
