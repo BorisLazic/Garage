@@ -85,6 +85,7 @@ public class UserMode {
         Button addRandomVehicle = new Button("Add random vehicle");
         addRandomVehicle.setPrefSize(250, 50);
         addRandomVehicle.setOnAction(Event -> {
+
             Vehicle vehicle = Administrator.getRandomVehicle();
             Platform currentlyChosen = platformChoiceBox.getValue();
             currentlyChosen.getPlatformPlace(1,0).vehicle = vehicle;
