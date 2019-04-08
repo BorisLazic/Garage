@@ -21,6 +21,7 @@ public class Platform implements Serializable {
     public Vector<Traveler> traversalNodes;
     private ArrayList<ArrayList<PlatformNode>> vertices;
     public ArrayList<PlatformNode> freePlatformParkingRoute, fullPlatformParkingRoute, innerParkingExit, propagatedExitRoute;
+    private boolean accidentHappened = false;
     public final Integer objectLocker = 69;
 
     Platform() {
@@ -160,6 +161,13 @@ public class Platform implements Serializable {
     }
 
 
+    public boolean accidentHappened() {
+        return accidentHappened;
+    }
+
+    public void setAccidentHappened(boolean accidentHappened) {
+        this.accidentHappened = accidentHappened;
+    }
 }
 
 

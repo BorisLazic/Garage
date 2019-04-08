@@ -8,7 +8,7 @@ import static java.lang.Thread.sleep;
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
 
 //        Button administratorMode = new Button("Administrator mode");
 //        administratorMode.setPrefSize(250,50);
@@ -16,6 +16,7 @@ public class Main extends Application {
             Administrator administrator = new Administrator();
             administrator.showAdminMode(primaryStage);
 //        });
+
 //
 //        Button userMode = new Button("User mode");
 //        userMode.setPrefSize(250,50);

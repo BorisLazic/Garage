@@ -1,38 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Parking finished and fixed, vehicle at the end of the Garage just exits now :))))">
-      <change afterPath="$PROJECT_DIR$/src/garage/ParkingRegulation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/garage/Vehicles/ServiceVehicle.java" afterDir="false" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Service vehicle interface added for easier search of civil vehicles and later use for accident detection.&#10;Made whole Civil vehicle package.&#10;Added Parking Regulation.&#10;Traveller cleaned up.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Administrator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Administrator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Platform.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Platform.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Traveler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Traveler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IdeaProjects/garage/UserMode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IdeaProjects/garage/UserMode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Vehicles/Ambulance/AmbulanceCar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Vehicles/Ambulance/AmbulanceCar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Vehicles/Ambulance/AmbulanceVan.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Vehicles/Ambulance/AmbulanceVan.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Vehicles/Car.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Vehicles/Firefigher/Firetruck.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Vehicles/Firefigher/Firetruck.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Vehicles/Motorcycle.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Vehicles/Police/PoliceCar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Vehicles/Police/PoliceCar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Vehicles/Police/PoliceMotorcycle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Vehicles/Police/PoliceMotorcycle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Vehicles/Police/PoliceVan.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Vehicles/Police/PoliceVan.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Vehicles/Van.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/garage/Administrator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/garage/Administrator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/garage/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/garage/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/garage/Platform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/garage/Platform.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/garage/Traveler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/garage/Traveler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/garage/UserMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/garage/UserMode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/garage/Vehicles/Ambulance/AmbulanceCar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/garage/Vehicles/Ambulance/AmbulanceCar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/garage/Vehicles/Ambulance/AmbulanceVan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/garage/Vehicles/Ambulance/AmbulanceVan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/garage/Vehicles/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/garage/Vehicles/Civil/Car.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/garage/Vehicles/Firefigher/Firetruck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/garage/Vehicles/Firefigher/Firetruck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/garage/Vehicles/Motorcycle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/garage/Vehicles/Civil/Motorcycle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/garage/Vehicles/Police/PoliceCar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/garage/Vehicles/Police/PoliceCar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/garage/Vehicles/Police/PoliceMotorcycle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/garage/Vehicles/Police/PoliceMotorcycle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/garage/Vehicles/Police/PoliceVan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/garage/Vehicles/Police/PoliceVan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/garage/Vehicles/Van.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/garage/Vehicles/Civil/Van.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -97,38 +74,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/garage/UserMode.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="86" column="39" lean-forward="true" selection-start-line="86" selection-start-column="39" selection-end-line="86" selection-end-column="39" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/garage/ParkingRegulation.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="28" column="3" lean-forward="true" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="3" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/garage/Traveler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="79" column="17" lean-forward="true" selection-start-line="79" selection-start-column="17" selection-end-line="79" selection-end-column="17" />
+            <state relative-caret-position="-1768">
+              <caret line="126" column="45" lean-forward="true" selection-start-line="126" selection-start-column="45" selection-end-line="126" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#9180#9181#0" expanded="true" />
+                <element signature="e#10842#10843#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/garage/PlatformNode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1003">
+              <caret line="72" column="20" selection-start-line="72" selection-start-column="20" selection-end-line="72" selection-end-column="20" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -137,8 +102,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/garage/Platform.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="83" column="47" selection-start-line="83" selection-start-column="47" selection-end-line="83" selection-end-column="47" />
+            <state relative-caret-position="2516">
+              <caret line="163" column="19" selection-start-line="163" selection-start-column="19" selection-end-line="163" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -159,14 +124,11 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>if (iterator.hasNext())nextNode = iterator.next();</find>
-      <find>isLook</find>
       <find>next</find>
       <find>setup</find>
       <find>PLATFORM CHANGE</find>
       <find>itera</find>
       <find>run</find>
-      <find>start</find>
       <find>layou</find>
       <find>i</find>
       <find>sync</find>
@@ -178,7 +140,6 @@
       <find>addRa</find>
       <find>platforms</find>
       <find>Garage</find>
-      <find>add</find>
       <find>addRan</find>
       <find>null</find>
       <find>\(\(vehicle.*\)</find>
@@ -188,7 +149,11 @@
       <find>instance</find>
       <find>addRandom</find>
       <find>park</find>
+      <find>add</find>
+      <find>start</find>
       <find>setOccupied</find>
+      <find>setuPNext</find>
+      <find>platform.</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -265,9 +230,6 @@
         <option value="$PROJECT_DIR$/src/garage/Vehicles/ServiceVehicle.java" />
         <option value="$PROJECT_DIR$/src/garage/Vehicles/Vehicle.java" />
         <option value="$PROJECT_DIR$/src/garage/Vehicles/CrossroadPriority.java" />
-        <option value="$PROJECT_DIR$/src/garage/Administrator.java" />
-        <option value="$PROJECT_DIR$/src/garage/PlatformNode.java" />
-        <option value="$PROJECT_DIR$/src/garage/Main.java" />
         <option value="$PROJECT_DIR$/src/garage/Vehicles/Police/PoliceCar.java" />
         <option value="$PROJECT_DIR$/src/garage/Vehicles/Police/PoliceMotorcycle.java" />
         <option value="$PROJECT_DIR$/src/garage/Vehicles/Police/PoliceVan.java" />
@@ -276,7 +238,10 @@
         <option value="$PROJECT_DIR$/src/garage/Vehicles/Ambulance/AmbulanceVan.java" />
         <option value="$PROJECT_DIR$/src/garage/UserMode.java" />
         <option value="$PROJECT_DIR$/src/garage/ParkingRegulation.java" />
+        <option value="$PROJECT_DIR$/src/garage/Administrator.java" />
+        <option value="$PROJECT_DIR$/src/garage/Main.java" />
         <option value="$PROJECT_DIR$/src/garage/Platform.java" />
+        <option value="$PROJECT_DIR$/src/garage/PlatformNode.java" />
         <option value="$PROJECT_DIR$/src/garage/Traveler.java" />
       </list>
     </option>
@@ -288,11 +253,10 @@
     </treeState>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1240" />
-    <option name="height" value="676" />
+    <option name="width" value="1936" />
+    <option name="height" value="1048" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectReloadState">
@@ -303,8 +267,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -334,6 +296,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -345,7 +309,7 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554555607594" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554646462617" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Oglasi" />
@@ -419,6 +383,7 @@
       </method>
     </configuration>
     <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="moduleWithDependencies" />
@@ -472,7 +437,14 @@
       <option name="project" value="LOCAL" />
       <updated>1554539500265</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Service vehicle interface added for easier search of civil vehicles and later use for accident detection.&#10;Made whole Civil vehicle package.&#10;Added Parking Regulation.&#10;Traveller cleaned up.">
+      <created>1554555945431</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1554555945432</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -488,10 +460,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="0" width="1936" height="1048" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.102345414" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.08315565" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -499,8 +471,8 @@
       <window_info id="UI Designer" order="5" />
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32502708" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.33261105" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32240438" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2546448" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.34236187" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -513,7 +485,7 @@
       <window_info anchor="bottom" id="Event Log" order="12" weight="0.32719395" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.20043337" />
       <window_info anchor="bottom" id="Terminal" order="14" weight="0.3286119" />
-      <window_info anchor="right" x="0" y="0" width="337" height="638" id="Documentation" order="0" side_tool="true" weight="0.3219616" />
+      <window_info anchor="right" x="0" y="0" width="337" height="638" id="Documentation" order="0" side_tool="true" weight="0.30490404" />
       <window_info anchor="right" id="Coverage" order="1" side_tool="true" weight="0.3295302" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="2" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="3" weight="0.24966443" />
@@ -600,13 +572,28 @@
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <MESSAGE value="Just a test" />
     <MESSAGE value="Parking finished and fixed, vehicle at the end of the Garage just exits now :))))" />
-    <option name="LAST_COMMIT_MESSAGE" value="Parking finished and fixed, vehicle at the end of the Garage just exits now :))))" />
+    <MESSAGE value="Service vehicle interface added for easier search of civil vehicles and later use for accident detection.&#10;Made whole Civil vehicle package.&#10;Added Parking Regulation.&#10;Traveller cleaned up." />
+    <option name="LAST_COMMIT_MESSAGE" value="Service vehicle interface added for easier search of civil vehicles and later use for accident detection.&#10;Made whole Civil vehicle package.&#10;Added Parking Regulation.&#10;Traveller cleaned up." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -890,16 +877,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/garage/PlatformNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-930">
-          <caret line="16" column="37" lean-forward="true" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/garage/Vehicles/Vehicle.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -907,27 +884,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#Vehicle#1;class#Vehicle#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/garage/Administrator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="35" column="25" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#addVehicle#0;class#Administrator#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/garage/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="19" column="37" lean-forward="true" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
-          <folding>
-            <marker date="1554547944607" expanded="true" signature="410:544" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1029,13 +985,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_201/src.zip!/java/lang/Thread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="745" column="16" selection-start-line="745" selection-start-column="16" selection-end-line="745" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_201/src.zip!/java/time/Duration.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
@@ -1063,23 +1012,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/garage/Platform.java">
+    <entry file="file://$PROJECT_DIR$/src/garage/Administrator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="83" column="47" selection-start-line="83" selection-start-column="47" selection-end-line="83" selection-end-column="47" />
+        <state relative-caret-position="298">
+          <caret line="82" column="54" lean-forward="true" selection-start-line="82" selection-start-column="54" selection-end-line="82" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#addVehicle#0;class#Administrator#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_201/src.zip!/java/lang/Thread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="747" selection-start-line="747" selection-end-line="747" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/garage/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="e#1373#1374#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/garage/Traveler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="79" column="17" lean-forward="true" selection-start-line="79" selection-start-column="17" selection-end-line="79" selection-end-column="17" />
+        <state relative-caret-position="-1768">
+          <caret line="126" column="45" lean-forward="true" selection-start-line="126" selection-start-column="45" selection-end-line="126" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#9180#9181#0" expanded="true" />
+            <element signature="e#10842#10843#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/garage/PlatformNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1003">
+          <caret line="72" column="20" selection-start-line="72" selection-start-column="20" selection-end-line="72" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/garage/Platform.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2516">
+          <caret line="163" column="19" selection-start-line="163" selection-start-column="19" selection-end-line="163" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
