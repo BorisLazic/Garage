@@ -2,11 +2,11 @@ package garage.Vehicles.Firefigher;
 
 import garage.Administrator;
 import garage.Vehicles.Civil.Van;
-import garage.Vehicles.ServiceVehicle;
+import garage.Vehicles.EmergencyService;
 
 import java.io.Serializable;
 
-public class Firetruck extends Van implements Serializable, ServiceVehicle {
+public class Firetruck extends Van implements Serializable, EmergencyService {
     public Firetruck() {
         super();
         setImageURI(Administrator.appFilesPath + "Firetruck.jpg");

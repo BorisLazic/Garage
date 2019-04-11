@@ -1,5 +1,6 @@
 package garage;
 
+import garage.Vehicles.Civil.Car;
 import garage.Vehicles.Vehicle;
 import javafx.scene.control.Label;
 import javafx.util.Pair;
@@ -10,6 +11,7 @@ import java.util.LinkedList;
 import java.util.Random;
 import java.util.Vector;
 
+import static garage.Administrator.Garage;
 import static garage.UserMode.GRID_HEIGHT;
 import static garage.UserMode.GRID_WIDTH;
 
@@ -24,9 +26,12 @@ public class Platform implements Serializable {
     private boolean accidentHappened = false;
     public final Integer objectLocker = 69;
 
+
     Platform() {
         freeParkingSpots = 28;
         platformVehicles = new LinkedList<>();
+        if (Garage != null)
+            platformIndexCounter = Garage.size();
         platformIndex = platformIndexCounter++;
         traversalNodes = new Vector<>();
         vertices = new ArrayList<>();
@@ -142,12 +147,17 @@ public class Platform implements Serializable {
 
     public void startSimulation() {
         Random random = new Random();
+        if (toString().contains("3")) {
+            traversalNodes.get(0).start();
+            traversalNodes.get(4).start();
+            return;
+        }
         for (Traveler traveler :
                 traversalNodes) {
-            if (random.nextInt(100) < 15 && !traveler.isMoving())
-            {
+            if (random.nextInt(100) < 15 && !traveler.isMoving()) {
                 traveler.start();
-        }}
+            }
+        }
     }
 
 

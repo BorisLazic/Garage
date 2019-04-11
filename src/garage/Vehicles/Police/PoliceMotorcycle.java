@@ -2,11 +2,11 @@ package garage.Vehicles.Police;
 
 import garage.Administrator;
 import garage.Vehicles.Civil.Motorcycle;
-import garage.Vehicles.ServiceVehicle;
+import garage.Vehicles.EmergencyService;
 
 import java.io.Serializable;
 
-public class PoliceMotorcycle extends Motorcycle implements Serializable, ServiceVehicle {
+public class PoliceMotorcycle extends Motorcycle implements Serializable, EmergencyService {
 
     public PoliceMotorcycle() {
         super();

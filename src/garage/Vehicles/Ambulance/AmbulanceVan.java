@@ -2,11 +2,11 @@ package garage.Vehicles.Ambulance;
 
 import garage.Administrator;
 import garage.Vehicles.Civil.Van;
-import garage.Vehicles.ServiceVehicle;
+import garage.Vehicles.EmergencyService;
 
 import java.io.Serializable;
 
-public class AmbulanceVan extends Van implements Serializable, ServiceVehicle {
+public class AmbulanceVan extends Van implements Serializable, EmergencyService {
 
     public AmbulanceVan() {
         super();

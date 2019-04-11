@@ -137,6 +137,11 @@ public class Administrator {
         imageURI.setCellValueFactory(new PropertyValueFactory<>("imageURI"));
 
         tableView.getColumns().addAll(name, chassisNumber, engineNumber, registrationNumber, imageURI);
+        tableView.getColumns().get(0).prefWidthProperty().bind(tableView.widthProperty().divide(6).subtract(3));
+        tableView.getColumns().get(1).prefWidthProperty().bind(tableView.widthProperty().divide(8).subtract(3));
+        tableView.getColumns().get(2).prefWidthProperty().bind(tableView.widthProperty().divide(8).subtract(3));
+        tableView.getColumns().get(3).prefWidthProperty().bind(tableView.widthProperty().divide(5).subtract(3));
+        tableView.getColumns().get(4).prefWidthProperty().bind(tableView.widthProperty().divide(3));
         tableView.setItems(FXCollections.observableArrayList(platformChoiceBox.getValue().getPlatformVehicles()));
         platformChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             tableView.getItems().clear();
@@ -441,8 +446,15 @@ public class Administrator {
                                 imageURI.getText(), Integer.parseInt(carryingCapacity.getText()));
                         platformChoiceBox.getValue().getPlatformVehicles().add(toAdd);
                         tableView.getItems().add(toAdd);
-                    } else {
+                    } else if(vehicleType.contains("Ambulance")) {
                         AmbulanceVan toAdd = new AmbulanceVan(
+                                vehicleName.getText(), chassisNumber.getText(),
+                                engineNumber.getText(), registrationNumber.getText(),
+                                imageURI.getText(), Integer.parseInt(carryingCapacity.getText()));
+                        platformChoiceBox.getValue().getPlatformVehicles().add(toAdd);
+                        tableView.getItems().add(toAdd);
+                    }else {
+                        Firetruck toAdd = new Firetruck(
                                 vehicleName.getText(), chassisNumber.getText(),
                                 engineNumber.getText(), registrationNumber.getText(),
                                 imageURI.getText(), Integer.parseInt(carryingCapacity.getText()));

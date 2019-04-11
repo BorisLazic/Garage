@@ -77,7 +77,7 @@ public class UserMode {
         startSimulation.setPrefSize(250, 50);
         startSimulation.setOnAction(Event -> {
             startSimulation(platformChoiceBox.getItems());
-//            startSimulation.disableProperty().setValue(true); TODO UNCOMMENT
+//            startSimulation.disableProperty().setValue(true); TODO UNCOMMENT When ABOUT TO FINISH PROJEECT :D :):)
         });
         startSimulation.disableProperty().bind(minimumVehicleAmount.disabledProperty().not());
 
@@ -93,6 +93,7 @@ public class UserMode {
             platformChoiceBox.getValue().traversalNodes.add(movingVehicle);
             movingVehicle.start();
         });
+        addRandomVehicle.disableProperty().bind(minimumVehicleAmount.disabledProperty().not());
 
 
         HBox upperMenu = new HBox(helpText, minimumVehicleAmount, startSimulation,addRandomVehicle);
@@ -139,7 +140,7 @@ public class UserMode {
                             "-fx-border-width:1px;" +
                             "-fx-border-style:solid;");
                 }
-                place.setPrefSize(50, 50);
+                place.setPrefSize(75, 50);
                 place.setAlignment(Pos.CENTER);
                 place.setFont(Font.font("Euphemia", FontWeight.BOLD, 35));
                 userModeGridPane.addRow(i, place);

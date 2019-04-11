@@ -70,6 +70,10 @@ public class PlatformNode implements Serializable {
         javafx.application.Platform.runLater(() -> nodeLabel.setText(defaultText));
     }
 
+    public void overtakeLeave(){
+        javafx.application.Platform.runLater(() -> nodeLabel.setText(defaultText));
+    }
+
     public void emplace(Vehicle vehicle, String label){
         this.vehicle = vehicle;
         javafx.application.Platform.runLater(() -> nodeLabel.setText(label));
