@@ -377,7 +377,7 @@ public class Traveler extends Thread implements Serializable {
                     }
                     System.out.println("Extending route");
                     iterator = extendRoute();
-                    nextNode = iterator.next();//TODO TEST WITHOUT THIS DOWN THERE, IT'S MOST LIKELY VERY UNNECESSARY
+                    nextNode = iterator.next();
                     if (nextNode.isEmpty()) {
                         System.out.println(labelText + "MOVING TO NEXT NODE");
                         moveTo(nextNode);
@@ -426,6 +426,21 @@ public class Traveler extends Thread implements Serializable {
                     }
                     System.out.println("Extending route");
                     iterator = extendRoute();
+                    nextNode = iterator.next();
+                    if (nextNode.isEmpty()) {
+                        System.out.println(labelText + "MOVING TO NEXT NODE");
+                        moveTo(nextNode);
+                        sleep(waitAmount / 2);
+                    } else if (nextNode.nodeLabel.getText().contains("R")) {
+                        System.out.println(labelText + "WAITING FOR THE NEXT NODE");
+                        while (nextNode.nodeLabel.getText().contains("R"))
+                            sleep(waitAmount / 2);
+                        moveTo(nextNode);
+                        sleep(waitAmount / 2);
+                    } else {
+                        System.out.println(labelText + "OVERTAKE NEXT NODE AND OTHERS");
+                        overtake(nextNode);
+                    }
                 }
             }
         } catch (InterruptedException e) {
@@ -486,12 +501,13 @@ public class Traveler extends Thread implements Serializable {
         }
         if (overtakeOngoing) {
             if (nextNode.nodeLabel.getText().contains("R"))
-                while (nextNode.nodeLabel.getText().contains("R")) ;
-            try {
-                sleep(waitAmount / 2);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+                while (nextNode.nodeLabel.getText().contains("R")) {
+                    try {
+                        sleep(waitAmount / 2);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
             synchronized (platform.objectLocker) {
                 currentNode.emplace(currentNode.vehicle, previousLabel);
                 currentNode = nextNode;
@@ -503,9 +519,7 @@ public class Traveler extends Thread implements Serializable {
                 e.printStackTrace();
             }
         }
-
     }
-
 
     private Iterator<PlatformNode> extendRoute() {
         int indexOfCurrentNode = platform.getCardinalIndex(currentNode);

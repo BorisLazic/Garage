@@ -147,7 +147,7 @@ public class Platform implements Serializable {
 
     public void startSimulation() {
         Random random = new Random();
-        if (toString().contains("3")) {
+        if (toString().contains("1")) {
             traversalNodes.get(0).start();
             traversalNodes.get(4).start();
             return;

@@ -1,29 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="I've no idea how to breathe.&#10;I fixed some synchronize shit.">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="This doesn't deserve a description, I really forgot how to breathe.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Administrator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Administrator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Platform.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Platform.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IdeaProjects/garage/PlatformNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IdeaProjects/garage/PlatformNode.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Traveler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Traveler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Vehicles/Ambulance/AmbulanceCar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Vehicles/Ambulance/AmbulanceCar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Vehicles/Ambulance/AmbulanceVan.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Vehicles/Ambulance/AmbulanceVan.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Vehicles/Firefigher/Firetruck.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Vehicles/Firefigher/Firetruck.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Vehicles/Police/PoliceCar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Vehicles/Police/PoliceCar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Vehicles/Police/PoliceMotorcycle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Vehicles/Police/PoliceMotorcycle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Vehicles/Police/PoliceVan.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IdeaProjects/garage/Vehicles/Police/PoliceVan.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/garage/Administrator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/garage/Administrator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IdeaProjects/garage/UserMode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IdeaProjects/garage/UserMode.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/garage/Platform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/garage/Platform.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/garage/PlatformNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/garage/PlatformNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/garage/Traveler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/garage/Traveler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/garage/UserMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/garage/UserMode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/garage/Vehicles/Ambulance/AmbulanceCar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/garage/Vehicles/Ambulance/AmbulanceCar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/garage/Vehicles/Ambulance/AmbulanceVan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/garage/Vehicles/Ambulance/AmbulanceVan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/garage/Vehicles/Firefigher/Firetruck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/garage/Vehicles/Firefigher/Firetruck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/garage/Vehicles/Police/PoliceCar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/garage/Vehicles/Police/PoliceCar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/garage/Vehicles/Police/PoliceMotorcycle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/garage/Vehicles/Police/PoliceMotorcycle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/garage/Vehicles/Police/PoliceVan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/garage/Vehicles/Police/PoliceVan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/garage/Vehicles/ServiceVehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/garage/Vehicles/EmergencyService.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -91,12 +76,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/garage/Traveler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
-              <caret line="379" column="117" selection-start-line="379" selection-start-column="117" selection-end-line="379" selection-end-column="117" />
+            <state relative-caret-position="171">
+              <caret line="445" column="9" selection-start-line="445" selection-start-column="9" selection-end-line="445" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4349#4350#0" expanded="true" />
-                <element signature="e#4395#4396#0" expanded="true" />
+                <element signature="method#overtake#0;class#Traveler#0" />
+                <element signature="e#25044#25045#0" expanded="true" />
                 <element signature="e#25075#25076#0" expanded="true" />
               </folding>
             </state>
@@ -106,7 +91,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/garage/PlatformNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="79">
+            <state relative-caret-position="126">
               <caret line="16" column="27" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -122,8 +107,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/garage/Platform.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="169" column="51" lean-forward="true" selection-start-line="169" selection-start-column="51" selection-end-line="169" selection-end-column="51" />
+            <state relative-caret-position="168">
+              <caret line="169" selection-start-line="169" selection-end-line="169" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#6386#6387#0" expanded="true" />
@@ -148,7 +133,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>sleep(waitAmount * 2);</find>
       <find>nextNode.vehicle == null</find>
       <find>nextNode.vehicle ==</find>
       <find>if (nextNode.isEmpty())</find>
@@ -178,6 +162,7 @@
       <find>extendRoute</find>
       <find>extending</find>
       <find>cause</find>
+      <find>exte</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -283,9 +268,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="width" value="784" />
-    <option name="height" value="832" />
+    <option name="x" value="-9" />
+    <option name="width" value="785" />
+    <option name="height" value="833" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectReloadState">
@@ -296,6 +281,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -325,8 +312,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -338,7 +323,7 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555013743545" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555063914464" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../KriptoGrafija" />
@@ -480,7 +465,14 @@
       <option name="project" value="LOCAL" />
       <updated>1554753145760</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="This doesn't deserve a description, I really forgot how to breathe.">
+      <created>1555013792631</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1555013792631</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -496,10 +488,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.13113007" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.1328859" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -508,7 +500,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3217768" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.21668473" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.21529745" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.31419286" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -630,7 +622,8 @@
     <MESSAGE value="Parking finished and fixed, vehicle at the end of the Garage just exits now :))))" />
     <MESSAGE value="Service vehicle interface added for easier search of civil vehicles and later use for accident detection.&#10;Made whole Civil vehicle package.&#10;Added Parking Regulation.&#10;Traveller cleaned up." />
     <MESSAGE value="I've no idea how to breathe.&#10;I fixed some synchronize shit." />
-    <option name="LAST_COMMIT_MESSAGE" value="I've no idea how to breathe.&#10;I fixed some synchronize shit." />
+    <MESSAGE value="This doesn't deserve a description, I really forgot how to breathe." />
+    <option name="LAST_COMMIT_MESSAGE" value="This doesn't deserve a description, I really forgot how to breathe." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -643,21 +636,15 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/garage/Traveler.java</url>
-          <line>566</line>
+          <line>580</line>
           <properties />
           <option name="timeStamp" value="77" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/garage/Traveler.java</url>
-          <line>569</line>
+          <line>583</line>
           <properties />
           <option name="timeStamp" value="79" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/garage/Traveler.java</url>
-          <line>427</line>
-          <properties />
-          <option name="timeStamp" value="80" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -1126,7 +1113,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/garage/PlatformNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="79">
+        <state relative-caret-position="126">
           <caret line="16" column="27" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1140,8 +1127,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/garage/Platform.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="169" column="51" lean-forward="true" selection-start-line="169" selection-start-column="51" selection-end-line="169" selection-end-column="51" />
+        <state relative-caret-position="168">
+          <caret line="169" selection-start-line="169" selection-end-line="169" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#6386#6387#0" expanded="true" />
@@ -1154,12 +1141,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/garage/Traveler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="379" column="117" selection-start-line="379" selection-start-column="117" selection-end-line="379" selection-end-column="117" />
+        <state relative-caret-position="171">
+          <caret line="445" column="9" selection-start-line="445" selection-start-column="9" selection-end-line="445" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4349#4350#0" expanded="true" />
-            <element signature="e#4395#4396#0" expanded="true" />
+            <element signature="method#overtake#0;class#Traveler#0" />
+            <element signature="e#25044#25045#0" expanded="true" />
             <element signature="e#25075#25076#0" expanded="true" />
           </folding>
         </state>
