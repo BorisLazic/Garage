@@ -22,7 +22,8 @@ public class ParkingRegulation {
 
     public void endParkingMeterAndCharge(String registrationsNumber) {
         Instant end = Instant.now();
-        Duration parkingTime = Duration.between(carsThatEntered.get(registrationsNumber),end);
+        Instant start = carsThatEntered.get(registrationsNumber);
+        Duration parkingTime = Duration.between(start,end);
         String amountCharged;
         if(parkingTime.toMillis()/1000 < hourInSeconds)
             amountCharged = "1KM";
@@ -32,10 +33,10 @@ public class ParkingRegulation {
             amountCharged = "8KM";
 
         synchronized (writeSync) {
-            try(PrintWriter writeBill = new PrintWriter(new FileOutputStream(new File(Administrator.appFilesPath + "BilledCars.txt"),true))) {
-                writeBill.println(LocalDateTime.now().toString()+": " + registrationsNumber + " was charged " + amountCharged);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
+            try(PrintWriter writeBill = new PrintWriter(new FileOutputStream(new File(Administrator.appFilesPath + "BilledCars.csv"),true))) {
+                writeBill.println(LocalDateTime.now().toString()+"," + registrationsNumber + "," + amountCharged);
+            } catch (FileNotFoundException ignored) {
+
             }
         }
     }

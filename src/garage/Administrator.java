@@ -3,12 +3,13 @@ package garage;
 import garage.Vehicles.Ambulance.AmbulanceCar;
 import garage.Vehicles.Ambulance.AmbulanceVan;
 import garage.Vehicles.Civil.Car;
-import garage.Vehicles.Firefigher.Firetruck;
 import garage.Vehicles.Civil.Motorcycle;
+import garage.Vehicles.Civil.Van;
+import garage.Vehicles.Firefigher.Firetruck;
+import garage.Platform.Platform;
 import garage.Vehicles.Police.PoliceCar;
 import garage.Vehicles.Police.PoliceMotorcycle;
 import garage.Vehicles.Police.PoliceVan;
-import garage.Vehicles.Civil.Van;
 import garage.Vehicles.Vehicle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -27,6 +28,7 @@ import javafx.stage.Stage;
 
 import java.io.*;
 import java.util.LinkedList;
+import java.util.Properties;
 import java.util.Random;
 
 public class Administrator {
@@ -49,13 +51,22 @@ public class Administrator {
             platformChoiceBox.setPrefSize(250, 50);
             Garage = platformChoiceBox.getItems();
         } catch (IOException e) {
-            Platform placeHolder = new Platform();
-            platformChoiceBox = new ChoiceBox<>(FXCollections.observableArrayList(placeHolder));
-            platformChoiceBox.setValue(placeHolder);
-            platformChoiceBox.setPrefSize(250, 50);
-            Garage = platformChoiceBox.getItems();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            try (BufferedReader propertyReading = new BufferedReader(new FileReader(new File(appFilesPath, "config.properties")))) {
+                Properties properties = new Properties();
+                properties.load(propertyReading);
+                int platformAmount = Integer.parseInt(properties.getProperty("quantityOfPlatforms"));
+                platformChoiceBox = new ChoiceBox<>(FXCollections.observableArrayList());
+                while(platformAmount-->0){
+                    platformChoiceBox.getItems().add(new Platform());
+                }
+                platformChoiceBox.setValue(platformChoiceBox.getItems().get(0));
+                platformChoiceBox.setPrefSize(250, 50);
+                Garage = platformChoiceBox.getItems();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        } catch (ClassNotFoundException ignored) {
+
         }
     }
 
@@ -174,8 +185,8 @@ public class Administrator {
             try (FileOutputStream fos = new FileOutputStream(new File(appFilesPath + "garage.ser"));
                  ObjectOutputStream writePlatforms = new ObjectOutputStream(fos)) {
                 writePlatforms.writeObject(new LinkedList<>(platformChoiceBox.getItems()));
-            } catch (IOException e) {
-                e.printStackTrace();
+            } catch (IOException ignored) {
+
             }
             UserMode.startUserMode(platformChoiceBox.getItems());
         });
@@ -187,7 +198,7 @@ public class Administrator {
 
         Button addPlatform = new Button("Add new platform");
         addPlatform.setPrefSize(250, 50);
-        addPlatform.setOnAction(Event -> javafx.application.Platform.runLater(() ->platformChoiceBox.getItems().add(new Platform())));
+        addPlatform.setOnAction(Event -> javafx.application.Platform.runLater(() -> platformChoiceBox.getItems().add(new Platform())));
 
         HBox addPlatformHBox = new HBox(addPlatform);
         addPlatformHBox.setAlignment(Pos.CENTER);
@@ -446,14 +457,14 @@ public class Administrator {
                                 imageURI.getText(), Integer.parseInt(carryingCapacity.getText()));
                         platformChoiceBox.getValue().getPlatformVehicles().add(toAdd);
                         tableView.getItems().add(toAdd);
-                    } else if(vehicleType.contains("Ambulance")) {
+                    } else if (vehicleType.contains("Ambulance")) {
                         AmbulanceVan toAdd = new AmbulanceVan(
                                 vehicleName.getText(), chassisNumber.getText(),
                                 engineNumber.getText(), registrationNumber.getText(),
                                 imageURI.getText(), Integer.parseInt(carryingCapacity.getText()));
                         platformChoiceBox.getValue().getPlatformVehicles().add(toAdd);
                         tableView.getItems().add(toAdd);
-                    }else {
+                    } else {
                         Firetruck toAdd = new Firetruck(
                                 vehicleName.getText(), chassisNumber.getText(),
                                 engineNumber.getText(), registrationNumber.getText(),

@@ -1,4 +1,4 @@
-package garage;
+package garage.Platform;
 
 import garage.Vehicles.Ambulance.AmbulanceCar;
 import garage.Vehicles.Ambulance.AmbulanceVan;
@@ -25,11 +25,11 @@ public class PlatformNode implements Serializable {
         vehicle = null;
         nodeLabel = new Label();
         this.isParkingSpot = isParkingSpot;
-        if(isParkingSpot)
+        if (isParkingSpot)
             defaultText = "*";
         else
             defaultText = "";
-        index= counter++;
+        index = counter++;
     }
 
     public boolean isEmpty() {
@@ -49,7 +49,7 @@ public class PlatformNode implements Serializable {
         }
     }
 
-    public void quickSetVehicleLabel(){
+    private void quickSetVehicleLabel() {
         if (vehicle instanceof PoliceMotorcycle || vehicle instanceof PoliceCar || vehicle instanceof PoliceVan) {
             nodeLabel.setText("P");
         } else if (vehicle instanceof AmbulanceCar || vehicle instanceof AmbulanceVan) {
@@ -61,7 +61,7 @@ public class PlatformNode implements Serializable {
         }
     }
 
-    public String toString(){
+    public String toString() {
         return "PlatformNode" + index;
     }
 
@@ -70,20 +70,27 @@ public class PlatformNode implements Serializable {
         javafx.application.Platform.runLater(() -> nodeLabel.setText(defaultText));
     }
 
-    public void overtakeLeave(){
+    public void overtakeLeave() {
         javafx.application.Platform.runLater(() -> nodeLabel.setText(defaultText));
     }
 
-    public void emplace(Vehicle vehicle, String label){
+    public void emplace(Vehicle vehicle, String label) {
         this.vehicle = vehicle;
         javafx.application.Platform.runLater(() -> nodeLabel.setText(label));
     }
 
+    private final Integer occupyLock = 15;
+
     public boolean isOccupied() {
-        return occupied;
+        synchronized (occupyLock) {
+            return occupied;
+        }
     }
+
     public void setOccupied(boolean occupied) {
-        this.occupied = occupied;
+        synchronized (occupyLock) {
+            this.occupied = occupied;
+        }
     }
 }
 

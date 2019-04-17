@@ -1,6 +1,7 @@
-package garage;
+package garage.Platform;
 
-import garage.Vehicles.Civil.Car;
+import garage.Traveler;
+import garage.UserMode;
 import garage.Vehicles.Vehicle;
 import javafx.scene.control.Label;
 import javafx.util.Pair;
@@ -12,11 +13,11 @@ import java.util.Random;
 import java.util.Vector;
 
 import static garage.Administrator.Garage;
-import static garage.UserMode.GRID_HEIGHT;
-import static garage.UserMode.GRID_WIDTH;
+import static garage.UserMode.*;
 
 public class Platform implements Serializable {
     private static int platformIndexCounter;
+    public int crashProbability = 10;
     private int platformIndex;
     public int freeParkingSpots;
     private LinkedList<Vehicle> platformVehicles;
@@ -25,9 +26,10 @@ public class Platform implements Serializable {
     public ArrayList<PlatformNode> freePlatformParkingRoute, fullPlatformParkingRoute, innerParkingExit, propagatedExitRoute;
     private boolean accidentHappened = false;
     public final Integer objectLocker = 69;
+    public final Integer crashLocker = 0;
 
 
-    Platform() {
+    public Platform() {
         freeParkingSpots = 28;
         platformVehicles = new LinkedList<>();
         if (Garage != null)
@@ -147,15 +149,11 @@ public class Platform implements Serializable {
 
     public void startSimulation() {
         Random random = new Random();
-        if (toString().contains("1")) {
-            traversalNodes.get(0).start();
-            traversalNodes.get(4).start();
-            return;
-        }
         for (Traveler traveler :
                 traversalNodes) {
             if (random.nextInt(100) < 15 && !traveler.isMoving()) {
                 traveler.start();
+                amountOfCarsMoving++;
             }
         }
     }
@@ -177,6 +175,12 @@ public class Platform implements Serializable {
 
     public void setAccidentHappened(boolean accidentHappened) {
         this.accidentHappened = accidentHappened;
+    }
+
+    public static int distanceBetweenTwoPoints(int firstPointCardinal, int secondPointCardinal) {
+        int iDistance = ((firstPointCardinal / 8) - (secondPointCardinal / 8)) * ((firstPointCardinal / 8) - (secondPointCardinal / 8));
+        int jDistance = ((firstPointCardinal % 8) - (secondPointCardinal % 8)) * ((firstPointCardinal % 8) - (secondPointCardinal % 8));
+        return (int) Math.sqrt(iDistance + jDistance);
     }
 }
 
